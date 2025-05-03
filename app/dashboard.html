@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Financial Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
+</head>
+<body class="dashboard-page">
+    <header class="header-container">
+        <div class="logo">
+            <i class="fas fa-wallet"></i>
+            <h1>Personal Financial Planner</h1>
+        </div>
+
+        <nav>
+            <a href="#profile"><i class="fa-solid fa-user"></i> User</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <h3>Navigation</h3>
+
+            <ul class="side-nav">
+                <li><a href="#overview"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
+                <li><a href="#budget"><i class="fa-solid fa-wallet"></i> Budget</a></li>
+                <li><a href="#expenses"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
+                <li><a href="#goal"><i class="fa-solid fa-crosshairs"></i> Goal</a></li>
+                <li><a href="#report"><i class="fa-sharp fa-solid fa-chart-pie"></i> Reports</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <ul>
+                    <li><a href="/auth/login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="dashboard-main-content">
+            <h2>Welcome (User)</h2>
+            <p>This is main dashboard</p>
+        </main>
+    </div>
+</body>
+</html>

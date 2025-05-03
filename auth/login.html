@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Planner | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/login-register.css">
+</head>
+<body class="login-register-page">
+    <div class="wrapper">
+        <form id="login-form">
+            <h2>Login</h2>
+
+            <div class="input-field">
+                <input type="email" id="email" required>
+                <label>Enter your email</label>
+            </div>
+
+            <div class="input-field">
+                <input type="password" id="password" name="password" required>
+                <label>Enter your password</label>
+                <i class="fa-solid fa-eye toggle-password"></i>
+            </div>
+
+            <div class="forget">
+                <label for="remember-me">
+                    <input type="checkbox" id="remember-me"> 
+                    <p>remember me</p>
+                </label>
+                <a href="#forget-password">Forget password?</a>
+            </div>
+
+            <button type="submit">Login</button>
+            <div class="register">
+                <p>Don't have an account? <a href="/auth/register.html"> Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="/public/js/login-register.js"></script>
+</body>
+</html>
