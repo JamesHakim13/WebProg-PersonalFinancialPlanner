@@ -15,9 +15,26 @@ document.addEventListener("DOMContentLoaded", function () {
     Others: "#7f8c8d"
   };
 
-  let expenses = [];
+  //let expenses = [];
+  let expenses = [
+    { date: new Date("2025-05-05"), category: "Food", amount: 12.50 },    // Monday
+    { date: new Date("2025-05-05"), category: "Transport", amount: 8.00 },
+    { date: new Date("2025-05-06"), category: "Food", amount: 15.00 },    // Tuesday
+    { date: new Date("2025-05-06"), category: "Shopping", amount: 25.00 },
+    { date: new Date("2025-05-07"), category: "Bills", amount: 45.00 },   // Wednesday
+    { date: new Date("2025-05-07"), category: "Food", amount: 10.00 },
+    { date: new Date("2025-05-08"), category: "Transport", amount: 6.00 },// Thursday
+    { date: new Date("2025-05-08"), category: "Others", amount: 5.50 },
+    { date: new Date("2025-05-09"), category: "Food", amount: 13.20 },    // Friday
+    { date: new Date("2025-05-10"), category: "Shopping", amount: 40.00 },// Saturday
+    { date: new Date("2025-05-11"), category: "Food", amount: 20.00 },    // Sunday
+    { date: new Date("2025-05-11"), category: "Bills", amount: 50.00 }
+  ];
+  
   let chart;
-
+  renderExpenseList();
+  updateChart();
+  
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -28,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!date || !category || isNaN(amount)) {
       return;
     }
-    alert(date+" "+category+" "+amount);
+    alert(date + " " + category + " " + amount);
 
     expenses.push({ date, category, amount });
     renderExpenseList();
@@ -59,61 +76,61 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateChart() {
-  const selectedCategory = categoryFilter.value;
-  const categories = Object.keys(categoryColors);
-  const dataPerCategory = {};
+    const selectedCategory = categoryFilter.value;
+    const categories = Object.keys(categoryColors);
+    const dataPerCategory = {};
 
-  // Initialize totals
-  categories.forEach((cat) => {
-    dataPerCategory[cat] = [0, 0, 0, 0, 0, 0, 0];
-  });
+    // Initialize totals
+    categories.forEach((cat) => {
+      dataPerCategory[cat] = [0, 0, 0, 0, 0, 0, 0];
+    });
 
-  // Fill in data
-  expenses.forEach((expense) => {
-    if (selectedCategory !== "All" && expense.category !== selectedCategory) return;
-    const dayIndex = expense.date.getDay() === 0 ? 6 : expense.date.getDay() - 1;
-    dataPerCategory[expense.category][dayIndex] += expense.amount;
-  });
+    // Fill in data
+    expenses.forEach((expense) => {
+      if (selectedCategory !== "All" && expense.category !== selectedCategory) return;
+      const dayIndex = expense.date.getDay() === 0 ? 6 : expense.date.getDay() - 1;
+      dataPerCategory[expense.category][dayIndex] += expense.amount;
+    });
 
-  // Convert to Chart.js datasets
-  const datasets = categories
-    .filter(cat => selectedCategory === "All" || cat === selectedCategory)
-    .map((cat) => ({
-      label: cat,
-      data: dataPerCategory[cat],
-      backgroundColor: categoryColors[cat],
-      stack: "expenses"
-    }));
+    // Convert to Chart.js datasets
+    const datasets = categories
+      .filter(cat => selectedCategory === "All" || cat === selectedCategory)
+      .map((cat) => ({
+        label: cat,
+        data: dataPerCategory[cat],
+        backgroundColor: categoryColors[cat],
+        stack: "expenses"
+      }));
 
-  if (chart) chart.destroy();
+    if (chart) chart.destroy();
 
-  chart = new Chart(chartCanvas, {
-    type: "bar",
-    data: {
-      labels: weekdays,
-      datasets: datasets
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        tooltip: { mode: 'index', intersect: false },
-        title: {
-          display: true,
-          text: `Expenses Breakdown (${selectedCategory})`
-        }
+    chart = new Chart(chartCanvas, {
+      type: "bar",
+      data: {
+        labels: weekdays,
+        datasets: datasets
       },
-      scales: {
-        x: {
-          stacked: true
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: { mode: 'index', intersect: false },
+          title: {
+            display: true,
+            text: `Expenses Breakdown (${selectedCategory})`
+          }
         },
-        y: {
-          stacked: true,
-          beginAtZero: true
+        scales: {
+          x: {
+            stacked: true
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-}
+    });
+  }
 
 
   categoryFilter.addEventListener("change", updateChart);
