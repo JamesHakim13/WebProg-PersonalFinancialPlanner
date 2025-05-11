@@ -1,20 +1,28 @@
+/* Shared styles for all pages - Financial Planner */
+
 /* Importing Google fonts - Open Sans */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap');
 
+/* Color variables and base settings */
 :root {
     --primary-color: #3a86ff;
     --secondary-color: #8338ec;
     --success-color: #06d6a0;
     --warning-color: #ffbe0b;
     --danger-color: #ef476f;
+    --info-color: #00b4d8;
     --text-dark: #1d3557;
     --text-light: #f1faee;
+    --text-muted: #6c757d;
     --bg-light: #f8f9fa;
     --bg-dark: #212529;
+    --bg-card: #ffffff;
     --border-radius: 8px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
 }
 
+/* Base styles */
 * {
     margin: 0;
     padding: 0;
@@ -33,11 +41,15 @@ html, body {
     margin: 0;
 }
 
+/* Header styles - common across all pages */
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     padding: 1rem 2rem;
     box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
 }
 
 .header-container {
@@ -64,9 +76,16 @@ header {
     font-size: 1.5rem;
 }
 
+.logo h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+}
+
 nav {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 nav a {
@@ -75,173 +94,21 @@ nav a {
     font-weight: 500;
     padding: 0.5rem;
     border-radius: var(--border-radius);
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav a i {
+    font-size: 1.25rem;
 }
 
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/public/images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 5rem 2rem;
-    text-align: center;
-    position: relative;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.button {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.feature {
-    padding: 5rem 2rem;
-    max-width: none;
-    margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section-title h2 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.section-title p {
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--text-dark);
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.feature-card {
-    text-align: center;
-    padding: 2rem;
-    background: var(--bg-light);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: all 0.3s ease;
-}
-
-/* .feature-card:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    max-width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-} */
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-}
-
-.feature-icon i {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.feature-card h3 {  
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-}
-
-.how-it-works {
-    padding: 5rem 2rem;
-}
-
-.steps-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.step {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.step:last-child {
-    margin-bottom: 0;
-}
-
-.step-number {
-    flex-shrink: 0;
-    width: 4rem;
-    height: 4rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.step-content {
-    flex-grow: 1;
-}
-
-.step-content h3 {
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-}
-
+/* Footer Styles - common across pages with footers */
 footer {
     background-color: var(--bg-dark);
     color: var(--text-light);
@@ -331,4 +198,69 @@ footer {
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 2rem;
+}
+
+/* Common button styles */
+.button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive media queries */
+@media (max-width: 991.98px) {
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .header-container {
+        padding: 0.5rem 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .logo h1 {
+        display: none;
+    }
+    
+    nav a span {
+        display: none;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }

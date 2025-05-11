@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Title - Financial Planner</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/public/css/shared.css">
+    <link rel="stylesheet" href="/public/css/app-layout.css">
+    <link rel="stylesheet" href="/public/css/modules.css">
+
+</head>
+<body class="app-page">
+    <header class="header-container">
+        <div class="logo">
+            <i class="fas fa-wallet"></i>
+            <h1>Personal Financial Planner</h1>
+        </div>
+
+        <nav>
+            <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+        </nav>
+    </header>
+
+    <div class="app-container">
+        <aside class="app-sidebar">
+            <h3>Navigation</h3>
+
+            <ul class="nav-menu">
+                <li><a href="dashboard.html"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
+                <li><a href="budget.html"><i class="fa-solid fa-wallet"></i> Budget</a></li>
+                <li><a href="expenses.html"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
+                <li><a href="goals.html"><i class="fa-solid fa-bullseye"></i> Financial Goals</a></li>
+                <li><a href="investment-strategies.html"><i class="fa-solid fa-lightbulb"></i> Investment Strategies</a></li>
+                <li><a href="market-dashboard.html"><i class="fa-solid fa-chart-line"></i> Market Insights</a></li>
+                <li><a href="calculator.html"><i class="fa-solid fa-calculator"></i> ROI Calculator</a></li>
+                <!-- Add your new module link here -->
+                <!-- <li><a href="your-module.html" class="active"><i class="fa-solid fa-icon-name"></i> Your Module</a></li> -->
+            </ul>
+
+            <div class="sidebar-footer">
+                <ul>
+                    <li><a href="../auth/login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="app-main-content">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="m-0"><i class="fa-solid fa-icon-name me-2"></i>Budget</h2>
+                    <div class="date-display">
+                        <i class="fa-regular fa-calendar me-2"></i><span id="current-date">May 11, 2025</span>
+                    </div>
+                </div>
+                
+                <!-- Your module content goes here -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Section Title</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Your content here...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional rows and columns for more content -->
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js (include if you need charts) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <!-- Dashboard Common JS -->
+    <script src="../public/js/dashboard.js"></script>
+    <!-- Your module specific JS file -->
+    <!-- <script src="../public/js/your-module.js"></script> -->
+    
+    <!-- Set current date -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentDate = document.getElementById('current-date');
+            const today = new Date();
+            currentDate.textContent = today.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        });
+    </script>
+</body>
+</html>

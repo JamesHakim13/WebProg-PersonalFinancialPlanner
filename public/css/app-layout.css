@@ -1,0 +1,423 @@
+/* App Layout Framework - Core structure for all authenticated pages */
+
+/* Import Google font - Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap');
+
+/* Color variables */
+:root {
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --success-color: #06d6a0;
+    --warning-color: #ffbe0b;
+    --danger-color: #ef476f;
+    --info-color: #00b4d8;
+    --text-dark: #1d3557;
+    --text-light: #f1faee;
+    --text-muted: #6c757d;
+    --bg-light: #f8f9fa;
+    --bg-dark: #212529;
+    --bg-card: #ffffff;
+    --sidebar-bg: #212529;
+    --nav-bg: rgba(82, 109, 255, 1);
+    --content-bg: #e6eaef; 
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+/* Main app layout */
+.app-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+/* Header styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+header a, 
+header a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav a i {
+    font-size: 1.25rem;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sidebar Styles - Matching original design */
+.app-sidebar {
+    background-color: var(--sidebar-bg);
+    color: white;
+    width: 230px;
+    flex-shrink: 0;
+    padding: 20px 0;
+}
+
+.app-sidebar h3 {
+    color: white;
+    padding: 0 20px 10px;
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.app-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app-sidebar ul li {
+    margin-bottom: 2px;
+}
+
+.app-sidebar ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 12px 20px;
+    transition: all var(--transition-speed) ease;
+}
+
+.app-sidebar ul li a i {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.app-sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.app-sidebar ul li a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: 500;
+}
+
+.nav-menu {
+    flex-grow: 1;
+}
+
+.sidebar-footer {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+/* Main Content Area - UPDATED */
+.app-main-content {
+    flex-grow: 1;
+    padding: 30px 20px 20px; /* Increased top padding */
+    background-color: var(--content-bg);
+    overflow-y: auto;
+}
+
+/* Better spacing for module headers */
+.app-main-content .d-flex.justify-content-between.align-items-center {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Module title styling */
+.app-main-content h2 {
+    margin: 0;
+    padding: 5px 0;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+}
+
+/* Container spacing */
+.app-main-content .container-fluid {
+    padding: 0 20px;
+}
+
+/* Date display enhancement */
+.date-display {
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    box-shadow: var(--box-shadow);
+    display: inline-flex;
+    align-items: center;
+}
+
+.date-display i {
+    margin-right: 5px;
+}
+
+/* Legacy class support - for backward compatibility */
+.dashboard-main-content {
+    flex-grow: 1;
+    padding: 30px 20px 20px;
+    background-color: var(--content-bg);
+    overflow-y: auto;
+}
+
+.dashboard-main-content .d-flex.justify-content-between.align-items-center {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-main-content h2 {
+    margin: 0;
+    padding: 5px 0;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+}
+
+.dashboard-main-content .container-fluid {
+    padding: 0 20px;
+}
+
+/* Card styles to match original design */
+.card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    border: none;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background-color: transparent;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Stats cards */
+.stat-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.stat-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.stat-card .value {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.stat-card .change {
+    color: var(--success-color);
+    font-size: 0.9rem;
+}
+
+.stat-card .change.negative {
+    color: var(--danger-color);
+}
+
+/* Chart container */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Progress styling */
+.progress {
+    height: 8px;
+    margin-top: 8px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* Table styling */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.table td, .table th {
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+
+/* Text utilities */
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.text-info {
+    color: var(--info-color) !important;
+}
+
+/* Button styling */
+.btn {
+    border-radius: var(--border-radius);
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #2a75e6;
+    border-color: #2a75e6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .app-sidebar {
+        width: 200px;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-main-content,
+    .dashboard-main-content {
+        padding: 15px;
+    }
+    
+    .chart-container {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .app-sidebar {
+        width: 60px;
+    }
+    
+    .app-sidebar ul li a span,
+    .app-sidebar h3 {
+        display: none;
+    }
+    
+    .app-sidebar ul li a {
+        justify-content: center;
+        padding: 12px 0;
+    }
+    
+    .app-sidebar ul li a i {
+        margin: 0;
+        font-size: 1.4rem;
+    }
+}
