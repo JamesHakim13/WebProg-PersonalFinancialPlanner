@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Financial Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/expense.css">
+</head>
+<body class="dashboard-page">
+    <header class="header-container">
+        <div class="logo">
+            <i class="fas fa-wallet"></i>
+            <h1>Personal Financial Planner</h1>
+        </div>
+
+        <nav>
+            <a href="#profile"><i class="fa-solid fa-user"></i> User</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <h3>Navigation</h3>
+
+            <ul class="side-nav">
+                <li><a href="#overview"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
+                <li><a href="#budget"><i class="fa-solid fa-wallet"></i> Budget</a></li>
+                <li><a href="#expenses"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
+                <li><a href="#goal"><i class="fa-solid fa-crosshairs"></i> Goal</a></li>
+                <li><a href="#report"><i class="fa-sharp fa-solid fa-chart-pie"></i> Reports</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <ul>
+                    <li><a href="../auth/login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="dashboard-main-content">
+             <section id="expense-form">
+    <h2>Add Expense</h2>
+    <form id="add-expense-form">
+      <label>
+        Date:
+        <input type="date" id="expense-date" required>
+      </label>
+      <label>
+        Category:
+        <select id="expense-category" required>
+          <option value="">--Select Category--</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+          <option value="Others">Others</option>
+        </select>
+      </label>
+      <label>
+        Amount:
+        <input type="number" id="expense-amount" placeholder="e.g., 50" required>
+      </label>
+      <button type="submit">Add Expense</button>
+    </form>
+  </section>
+
+  <section id="filter-section">
+    <label for="category-filter">Filter Chart by Category:</label>
+    <select id="category-filter">
+      <option value="All">All</option>
+      <option value="Food">Food</option>
+      <option value="Transport">Transport</option>
+      <option value="Shopping">Shopping</option>
+      <option value="Bills">Bills</option>
+      <option value="Others">Others</option>
+    </select>
+    <button id="toggle-chart">Hide Chart</button>
+  </section>
+
+  <section id="expense-list-section">
+    <h2>Expenses</h2>
+    <ul id="expense-list">
+      <!-- Expenses will appear here -->
+    </ul>
+  </section>
+
+  <section id="expense-chart-section">
+    <h2>Weekly Expenses Chart</h2>
+    <canvas id="weekly-expense-chart" width="600" height="300"></canvas>
+  </section>
+              
+              <footer>
+                <p>&copy; 2025 Personal Budget Tracker</p>
+              </footer>
+            
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../public/js/expense.js"></script>
+</body>
+</html>
