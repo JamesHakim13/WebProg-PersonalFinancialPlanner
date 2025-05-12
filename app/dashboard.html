@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard - Financial Planner</title>
+    <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/public/css/dashboard.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../public/css/shared.css">
+    <link rel="stylesheet" href="../public/css/app-layout.css">
+    <link rel="stylesheet" href="../public/css/modules.css">
 </head>
-<body class="dashboard-page">
+<body class="app-page">
     <header class="header-container">
         <div class="logo">
             <i class="fas fa-wallet"></i>
@@ -15,42 +21,250 @@
         </div>
 
         <nav>
-            <a href="profile.html"><i class="fa-solid fa-user"></i> User</a>
+            <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
         </nav>
     </header>
 
-    <div class="dashboard-container">
-        <aside class="dashboard-sidebar">
+    <div class="app-container">
+        <aside class="app-sidebar">
             <h3>Navigation</h3>
 
-            <ul class="side-nav">
-                <li><a href="#overview"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
-                <li><a href="#budget"><i class="fa-solid fa-wallet"></i> Budget</a></li>
-                <li><a href="#expenses"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
-                <li><a href="#goal"><i class="fa-solid fa-crosshairs"></i> Goal</a></li>
-                <li><a href="#report"><i class="fa-sharp fa-solid fa-chart-pie"></i> Reports</a></li>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="active"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
+                <li><a href="budget.html"><i class="fa-solid fa-wallet"></i> Budget</a></li>
+                <li><a href="expenses.html"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
+                <li><a href="goals.html"><i class="fa-solid fa-bullseye"></i> Financial Goals</a></li>
+                <li><a href="investment-strategies.html"><i class="fa-solid fa-lightbulb"></i> Investment Strategies</a></li>
+                <li><a href="market-dashboard.html"><i class="fa-solid fa-chart-line"></i> Market Insights</a></li>
+                <li><a href="calculator.html"><i class="fa-solid fa-calculator"></i> ROI Calculator</a></li>
             </ul>
 
             <div class="sidebar-footer">
                 <ul>
-                    <li><a href="/auth/login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                    <li><a href="../auth/login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                 </ul>
             </div>
         </aside>
 
-        <main class="dashboard-main-content">
-            <h2>Welcome (User)</h2>
-            <p>This is main dashboard</p>
+        <main class="app-main-content">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="m-0"><i class="fa-solid fa-gauge-simple-high me-2"></i>Dashboard Overview</h2>
+                    <div class="date-display">
+                        <i class="fa-regular fa-calendar me-2"></i><span id="current-date">May 11, 2025</span>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa-solid fa-wallet text-primary me-2"></i>Current Balance</h5>
+                                <h2 class="mt-3 mb-3">RM 12,350.00</h2>
+                                <p class="text-success mb-0"><i class="fa-solid fa-arrow-up me-1"></i> 8% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa-solid fa-receipt text-warning me-2"></i>Monthly Expenses</h5>
+                            <h2 class="mt-3 mb-3">RM 4,250.00</h2>
+                            <p class="text-danger mb-0"><i class="fa-solid fa-arrow-up me-1"></i> 3% from last month</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa-solid fa-bullseye text-success me-2"></i>Goals Progress</h5>
+                            <h2 class="mt-3 mb-3">65%</h2>
+                            <p class="text-success mb-0"><i class="fa-solid fa-arrow-up me-1"></i> 5% from last month</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa-solid fa-chart-line text-info me-2"></i>Investments</h5>
+                            <h2 class="mt-3 mb-3">RM 8,750.00</h2>
+                            <p class="text-success mb-0"><i class="fa-solid fa-arrow-up me-1"></i> 2.5% return</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-8 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">Expense Overview</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="expense-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">Expense Breakdown</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="expense-breakdown-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Financial Goals</h5>
+                            <a href="goals.html" class="btn btn-sm btn-primary">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Emergency Fund</h6>
+                                        <small>85%</small>
+                                    </div>
+                                    <div class="progress mt-2" style="height: 6px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Vacation</h6>
+                                        <small>42%</small>
+                                    </div>
+                                    <div class="progress mt-2" style="height: 6px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 42%"></div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">New Car</h6>
+                                        <small>15%</small>
+                                    </div>
+                                    <div class="progress mt-2" style="height: 6px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 15%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Market Insights</h5>
+                            <a href="market-dashboard.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">S&P 500</h6>
+                                        <span class="text-success">+0.75%</span>
+                                    </div>
+                                    <small class="text-muted">5,435.78 | US Market</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Technology Sector</h6>
+                                        <span class="text-success">+1.2%</span>
+                                    </div>
+                                    <small class="text-muted">Leading sector this week</small>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Interest Rates</h6>
+                                        <span class="text-warning">No Change</span>
+                                    </div>
+                                    <small class="text-muted">Fed maintains current rates</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
-    
-
-    
-
-    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
     <script src="../public/js/dashboard.js"></script>
-
-
+    <script>
+        // Set current date
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentDate = document.getElementById('current-date');
+            const today = new Date();
+            currentDate.textContent = today.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Sample charts
+            const expenseCtx = document.getElementById('expense-chart').getContext('2d');
+            new Chart(expenseCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Expenses',
+                        data: [3200, 3800, 3500, 4100, 3900, 4250],
+                        borderColor: '#3a86ff',
+                        tension: 0.3,
+                        fill: false
+                    },
+                    {
+                        label: 'Income',
+                        data: [5000, 5200, 5300, 5150, 5400, 5500],
+                        borderColor: '#06d6a0',
+                        tension: 0.3,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+            
+            const breakdownCtx = document.getElementById('expense-breakdown-chart').getContext('2d');
+            new Chart(breakdownCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Housing', 'Food', 'Transport', 'Utilities', 'Entertainment', 'Others'],
+                    datasets: [{
+                        data: [35, 20, 15, 10, 10, 10],
+                        backgroundColor: [
+                            '#3a86ff', '#8338ec', '#ffbe0b', '#ff006e', '#06d6a0', '#fb5607'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+    </script>
 </body>
 </html>

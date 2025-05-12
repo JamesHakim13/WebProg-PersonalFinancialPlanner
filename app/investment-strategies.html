@@ -52,7 +52,7 @@
         <main class="app-main-content">
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="m-0"><i class="fa-solid fa-bullseye me-2"></i>Financial Goals</h2>
+                    <h2 class="m-0"><i class="fa-solid fa-lightbulb me-2"></i>Investment Strategies</h2>
                     <div class="date-display">
                         <i class="fa-regular fa-calendar me-2"></i><span id="current-date">May 11, 2025</span>
                     </div>
@@ -63,72 +63,17 @@
                     <div class="col-12">
                         <div class="card shadow-sm">
                             <div class="card-header bg-primary bg-opacity-75 text-white">
-
-                                <h5 class="mb-0">Add Goal</h5>
+                                <h5 class="mb-0">Section Title</h5>
                             </div>
                             <div class="card-body">
-                                 <div class="card-body">
-                                    <form id="add-goal-form">
-                                        <div class="mb-3">  
-                                            <label for="goalName" class="form-label">Goal Name</label>
-                                            <input type="text" class="form-control" id="goalName" name="goalName" required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="amount" class="form-label">Target Amount (RM)</label>
-                                            <input type="number" class="form-control" id="amount" name="amount" required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="deadline" class="form-label">Deadline</label>
-                                            <input type="date" class="form-control" id="deadline" name="deadline" required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="priority" class="form-label">Priority</label>
-                                            <select class="form-select" id="priority" name="priority">
-                                                <option value="high">High</option>
-                                                <option value="medium">Medium</option>
-                                                <option value="low">Low</option>
-                                            </select>
-                                        </div>
-
-                                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Add Goal</button>
-                                    </form>
-                                </div>
+                                <p>Your content here...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Additional rows and columns for more content -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card shadow-sm">
-                            <div class="card-header bg-primary bg-opacity-75 text-white">
-                                <h5 class="mb-0">Existing Goals</h5>
-                            </div>
-                                <div class="card-body">
-                                        <!-- Table to display goals -->
-                                    <div class="mt-1">
-                                        <table id="goal-table" class="table table-striped mt-3">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th>Goal</th>
-                                                    <th>Amount (RM)</th>
-                                                    <th>Deadline</th>
-                                                    <th>Priority</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- JS will populate this -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                
-                                </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </main>
     </div>
@@ -140,9 +85,6 @@
     <!-- Dashboard Common JS -->
     <script src="../public/js/dashboard.js"></script>
     <!-- Your module specific JS file -->
-
-     <script src="../public/js/goals.js"></script>
-
     <!-- <script src="../public/js/your-module.js"></script> -->
     
     <!-- Set current date -->

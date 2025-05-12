@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
                  console.log('Login Attempt:');
                  console.log('Email:', email);
                  // Notify user of successful login
-                 alert('Login success');
+                 alert('Login successful!');
                  // Direct to dashboard.html after successful login
-                 window.location.href = "/app/dashboard.html"; 
+                 window.location.href = "../app/dashboard.html"; 
              } else {
                  console.error("Email or password input not found in the login form!");
              }

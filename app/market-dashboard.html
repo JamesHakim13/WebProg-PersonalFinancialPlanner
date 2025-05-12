@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insight Dashboard - Financial Planner</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../public/css/shared.css">
+    <link rel="stylesheet" href="../public/css/app-layout.css">
+    <link rel="stylesheet" href="../public/css/modules.css">
+
+</head>
+<body class="app-page">
+    <header class="header-container">
+        <div class="logo">
+            <i class="fas fa-wallet"></i>
+            <h1>Personal Financial Planner</h1>
+        </div>
+
+        <nav>
+            <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+        </nav>
+    </header>
+
+    <div class="app-container">
+        <aside class="app-sidebar">
+            <h3>Navigation</h3>
+
+            <ul class="nav-menu">
+                <li><a href="dashboard.html"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
+                <li><a href="budget.html"><i class="fa-solid fa-wallet"></i> Budget</a></li>
+                <li><a href="expenses.html"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
+                <li><a href="goals.html"><i class="fa-solid fa-bullseye"></i> Financial Goals</a></li>
+                <li><a href="investment-strategies.html"><i class="fa-solid fa-lightbulb"></i> Investment Strategies</a></li>
+                <li><a href="market-dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Market Insights</a></li>
+                <li><a href="calculator.html"><i class="fa-solid fa-calculator"></i> ROI Calculator</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <ul>
+                    <li><a href="../auth/login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="dashboard-main-content">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="m-0"><i class="fa-solid fa-chart-line me-2"></i>Module Title</h2>
+                    <div class="date-display">
+                        <i class="fa-regular fa-calendar me-2"></i><span id="current-date">May 11, 2025</span>
+                    </div>
+                </div>
+                
+                <!-- Filters Section -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary bg-gradient text-white">
+                        <h5 class="mb-0"><i class="fa-solid fa-filter me-2"></i>Filter Market Insights</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="filter-form" class="row g-3">
+                            <div class="col-md-3">
+                                <label for="sector-filter" class="form-label">Sector</label>
+                                <select class="form-select" id="sector-filter">
+                                    <option value="all" selected>All Sectors</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="energy">Energy</option>
+                                    <option value="consumer">Consumer</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="materials">Materials</option>
+                                    <option value="utilities">Utilities</option>
+                                    <option value="real-estate">Real Estate</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="region-filter" class="form-label">Region</label>
+                                <select class="form-select" id="region-filter">
+                                    <option value="all" selected>All Regions</option>
+                                    <option value="north-america">North America</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="asia-pacific">Asia Pacific</option>
+                                    <option value="latin-america">Latin America</option>
+                                    <option value="africa">Africa</option>
+                                    <option value="middle-east">Middle East</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="time-range" class="form-label">Time Range</label>
+                                <select class="form-select" id="time-range">
+                                    <option value="1d">1 Day</option>
+                                    <option value="7d">1 Week</option>
+                                    <option value="1m" selected>1 Month</option>
+                                    <option value="3m">3 Months</option>
+                                    <option value="6m">6 Months</option>
+                                    <option value="1y">1 Year</option>
+                                    <option value="ytd">Year to Date</option>
+                                    <option value="max">Max</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="keyword-search" class="form-label">Keyword</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="keyword-search" placeholder="Search...">
+                                    <button class="btn btn-outline-secondary" type="button" id="search-btn">
+                                        <i class="fa-solid fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary me-2" id="reset-filters">Reset</button>
+                                <button type="button" class="btn btn-primary" id="apply-filters">Apply Filters</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Market Summary Section -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Market Summary</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="market-index-item d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-0">S&P 500</h6>
+                                        <small class="text-muted">US</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold">5,435.78</div>
+                                        <div class="text-success"><i class="fa-solid fa-caret-up"></i> 0.75%</div>
+                                    </div>
+                                </div>
+                                <div class="market-index-item d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-0">Dow Jones</h6>
+                                        <small class="text-muted">US</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold">40,245.12</div>
+                                        <div class="text-success"><i class="fa-solid fa-caret-up"></i> 0.32%</div>
+                                    </div>
+                                </div>
+                                <div class="market-index-item d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-0">NASDAQ</h6>
+                                        <small class="text-muted">US</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold">17,820.45</div>
+                                        <div class="text-danger"><i class="fa-solid fa-caret-down"></i> 0.18%</div>
+                                    </div>
+                                </div>
+                                <div class="market-index-item d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-0">FTSE 100</h6>
+                                        <small class="text-muted">UK</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold">8,245.75</div>
+                                        <div class="text-success"><i class="fa-solid fa-caret-up"></i> 0.48%</div>
+                                    </div>
+                                </div>
+                                <div class="market-index-item d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-0">Nikkei 225</h6>
+                                        <small class="text-muted">Japan</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold">39,475.65</div>
+                                        <div class="text-success"><i class="fa-solid fa-caret-up"></i> 1.21%</div>
+                                    </div>
+                                </div>
+                                <div class="market-index-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0">KLCI</h6>
+                                        <small class="text-muted">Malaysia</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="fw-bold">1,577.82</div>
+                                        <div class="text-danger"><i class="fa-solid fa-caret-down"></i> 0.27%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Market Trend Chart</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="market-trend-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sector Performance and News Section -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Sector Performance</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="sector-performance-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary bg-opacity-75 text-white d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Market News</h5>
+                                <div class="badge bg-primary">Today</div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="list-group list-group-flush" id="market-news-list">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Fed Signals Rate Cuts as Inflation Cools</h6>
+                                            <small class="text-muted">2h ago</small>
+                                        </div>
+                                        <p class="mb-1">Federal Reserve chair indicates potential interest rate cuts in coming months as inflation shows signs of easing.</p>
+                                        <small><span class="badge bg-secondary">Finance</span></small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Tech Giants Announce New AI Partnerships</h6>
+                                            <small class="text-muted">4h ago</small>
+                                        </div>
+                                        <p class="mb-1">Major technology companies unveiled new AI initiatives and partnerships at industry conference.</p>
+                                        <small><span class="badge bg-info">Technology</span></small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Oil Prices Surge on Supply Concerns</h6>
+                                            <small class="text-muted">6h ago</small>
+                                        </div>
+                                        <p class="mb-1">Global oil prices increased by 3% amid concerns about supply constraints in major producing regions.</p>
+                                        <small><span class="badge bg-warning text-dark">Energy</span></small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Healthcare Stocks Rally on Medicare Expansion</h6>
+                                            <small class="text-muted">9h ago</small>
+                                        </div>
+                                        <p class="mb-1">Healthcare sector shows strong gains following announcement of Medicare coverage expansion for new treatments.</p>
+                                        <small><span class="badge bg-success">Healthcare</span></small>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="#" class="text-decoration-none">View All News <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Top Movers and Regional Performance -->
+                <div class="row mb-4">
+                    <div class="col-md-7">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Top Market Movers</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">Symbol</th>
+                                                <th scope="col">Company</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Change</th>
+                                                <th scope="col">% Change</th>
+                                                <th scope="col">Volume</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>TECH</td>
+                                                <td>TechCorp Inc.</td>
+                                                <td>$312.45</td>
+                                                <td class="text-success">+15.32</td>
+                                                <td class="text-success">+5.16%</td>
+                                                <td>3.8M</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ENER</td>
+                                                <td>EnergySol Co.</td>
+                                                <td>$87.21</td>
+                                                <td class="text-success">+3.75</td>
+                                                <td class="text-success">+4.49%</td>
+                                                <td>2.1M</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HLTH</td>
+                                                <td>HealthPlus Inc.</td>
+                                                <td>$142.65</td>
+                                                <td class="text-success">+4.89</td>
+                                                <td class="text-success">+3.55%</td>
+                                                <td>1.5M</td>
+                                            </tr>
+                                            <tr>
+                                                <td>FINA</td>
+                                                <td>FinServCorp</td>
+                                                <td>$92.14</td>
+                                                <td class="text-danger">-4.32</td>
+                                                <td class="text-danger">-4.48%</td>
+                                                <td>2.7M</td>
+                                            </tr>
+                                            <tr>
+                                                <td>RTAIL</td>
+                                                <td>RetailGiant</td>
+                                                <td>$63.25</td>
+                                                <td class="text-danger">-2.87</td>
+                                                <td class="text-danger">-4.34%</td>
+                                                <td>3.2M</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Regional Performance</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="regional-performance-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Economic Indicators -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-primary bg-opacity-75 text-white">
+                                <h5 class="mb-0">Economic Indicators</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-4">
+                                    <div class="col-md-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <h6>10-Year Treasury Yield</h6>
+                                            <div class="indicator-value text-danger">3.65% <i class="fa-solid fa-caret-up"></i></div>
+                                            <div class="small text-muted">+0.05 today</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <h6>Unemployment Rate</h6>
+                                            <div class="indicator-value">3.7%</div>
+                                            <div class="small text-muted">Unchanged</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <h6>Inflation Rate (CPI)</h6>
+                                            <div class="indicator-value text-success">2.8% <i class="fa-solid fa-caret-down"></i></div>
+                                            <div class="small text-muted">-0.2 from previous</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <h6>Fed Funds Rate</h6>
+                                            <div class="indicator-value">4.25-4.5%</div>
+                                            <div class="small text-muted">Target range</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="../public/js/dashboard.js"></script>
+    <script src="../public/js/market-dashboard.js"></script>
+</body>
+</html>

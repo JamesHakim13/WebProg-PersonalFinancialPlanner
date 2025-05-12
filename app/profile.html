@@ -10,10 +10,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../public/css/dashboard.css">
-    <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" href="../public/css/shared.css">
+    <link rel="stylesheet" href="../public/css/app-layout.css">
+    <link rel="stylesheet" href="../public/css/modules.css">
 </head>
-<body class="dashboard-page">
+<body class="app-page">
     <!-- Change header to match dashboard style -->
     <header class="header-container">
         <div class="logo">
@@ -27,17 +28,19 @@
     </header>
 
     <!-- Update container structure -->
-    <div class="dashboard-container">
+    <div class="app-container">
         <!-- Replace sidebar with dashboard style -->
-        <aside class="dashboard-sidebar">
+        <aside class="app-sidebar">
             <h3>Navigation</h3>
 
-            <ul class="side-nav">
+            <ul class="nav-menu">
                 <li><a href="dashboard.html"><i class="fa-solid fa-gauge-simple-high"></i> Overview</a></li>
-                <li><a href="#budget"><i class="fa-solid fa-wallet"></i> Budget</a></li>
-                <li><a href="#expenses"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
-                <li><a href="#goal"><i class="fa-solid fa-crosshairs"></i> Goal</a></li>
-                <li><a href="#report"><i class="fa-sharp fa-solid fa-chart-pie"></i> Reports</a></li>
+                <li><a href="budget.html"><i class="fa-solid fa-wallet"></i> Budget</a></li>
+                <li><a href="expenses.html"><i class="fa-solid fa-receipt"></i> Expenses</a></li>
+                <li><a href="goals.html"><i class="fa-solid fa-bullseye"></i> Financial Goals</a></li>
+                <li><a href="investment-strategies.html"><i class="fa-solid fa-lightbulb"></i> Investment Strategies</a></li>
+                <li><a href="market-dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Market Insights</a></li>
+                <li><a href="calculator.html"><i class="fa-solid fa-calculator"></i> ROI Calculator</a></li>
             </ul>
 
             <div class="sidebar-footer">

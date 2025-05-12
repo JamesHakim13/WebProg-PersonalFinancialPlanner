@@ -151,3 +151,85 @@ nav a:hover {
     margin-bottom: 20px;
     color: var(--primary-color);
 }
+
+section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #expense-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  #expense-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+  }
+  
+  #expense-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #expense-form button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #2b6777;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #expense-form button:hover {
+    background-color: #24606a;
+  }
+  
+  #expense-list {
+    list-style: none;
+    margin-top: 10px;
+  }
+  
+  #expense-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #expense-list li span {
+    font-weight: 500;
+  }
+  
+  .remove-btn {
+    background-color: #ff6b6b;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .remove-btn:hover {
+    background-color: #e44e4e;
+  }
+  
+  #expense-chart-section {
+    text-align: center;
+  }
+  
+  footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 40px;
+  }
