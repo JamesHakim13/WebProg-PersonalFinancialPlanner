@@ -63,16 +63,44 @@
                     <div class="col-12">
                         <div class="card shadow-sm">
                             <div class="card-header bg-primary bg-opacity-75 text-white">
-                                <h5 class="mb-0">Section Title</h5>
+                                <h5 class="mb-0">Investment Strategy Recommendation</h5>
                             </div>
                             <div class="card-body">
-                                <p>Your content here...</p>
+                                <div class="container mt-4">
+                                <form id="strategyForm">
+                                    <div class="mb-3">
+                                    <label for="financialGoal" class="form-label">Financial Goal</label>
+                                    <input type="text" class="form-control" id="financialGoal" placeholder="e.g., Buy a house, Retirement">
+                                    </div>
+
+                                    <div class="mb-3">
+                                    <label for="riskTolerance" class="form-label">Risk Tolerance</label>
+                                    <select class="form-select" id="riskTolerance">
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                    <label for="timeHorizon" class="form-label">Time Horizon (in years)</label>
+                                    <input type="number" class="form-control" id="timeHorizon" min="1" max="50">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Get Recommendation</button>
+                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Additional rows and columns for more content -->
+
+                <div class="container mt-4" id="recommendationResult" style="display: none;">
+                <h4>Suggested Strategy</h4>
+                <p id="strategyText" class="text-muted"></p>
+                </div>
                 
             </div>
         </main>
@@ -85,6 +113,8 @@
     <!-- Dashboard Common JS -->
     <script src="../public/js/dashboard.js"></script>
     <!-- Your module specific JS file -->
+    <script src="../public/js/investment-strategies.js"></script>
+
     <!-- <script src="../public/js/your-module.js"></script> -->
     
     <!-- Set current date -->
