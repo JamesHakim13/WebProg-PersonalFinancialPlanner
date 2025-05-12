@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Helper function to format currency
     function formatCurrency(value) {
-        return 'RM ' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '                <i class="fa-solid fa-circle-info me-2"></i>
-                ,');
-    }
+    return '<i class="fa-solid fa-circle-info me-2"></i>RM ' + 
+           value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 });
