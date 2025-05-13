@@ -121,11 +121,10 @@ function setupCategoryActions() {
             const categoryName = row.querySelector('td:first-child').textContent.trim();
             if (confirm(`Are you sure you want to delete the category "${categoryName}"?`)) {
                 // Delete the category
-                // In a real app, you would call an API to delete the category
-                row.remove();
-                
                 // Update the budget distribution chart
                 updateBudgetDistributionChart(categoryName);
+                // In a real app, you would call an API to delete the category
+                row.remove();
                 
                 alert(`Category "${categoryName}" has been deleted.`);
             }
