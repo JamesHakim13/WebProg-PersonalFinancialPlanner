@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="../public/css/shared.css">
     <link rel="stylesheet" href="../public/css/app-layout.css">
     <link rel="stylesheet" href="../public/css/modules.css">
+    <!-- Additional Calculator-specific CSS (optional) -->
+    <style>
+        .calculator-container {
+            transition: all 0.3s ease;
+        }
+        .result-value {
+            transition: all 0.3s ease;
+        }
+        .input-with-icon .form-control:focus {
+            border-color: #3a86ff;
+            box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+        }
+        .tooltip-info {
+            cursor: pointer;
+            color: #3a86ff;
+        }
+        .chart-container {
+            min-height: 250px;
+        }
+        .table-responsive {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body class="app-page">
     <header class="header-container">
@@ -82,8 +106,9 @@
                                             <label for="initial-investment" class="form-label">Initial Investment</label>
                                             <div class="input-with-icon">
                                                 <i class="fa-solid fa-money-bill"></i>
-                                                <input type="number" class="form-control" id="initial-investment" value="10000" min="1">
+                                                <input type="number" class="form-control" id="initial-investment" value="10000" min="1" step="100">
                                             </div>
+                                            <small class="text-muted">Enter the amount you plan to invest initially</small>
                                         </div>
                                         
                                         <div class="mb-3">
@@ -92,6 +117,7 @@
                                                 <i class="fa-solid fa-percent"></i>
                                                 <input type="number" class="form-control" id="rate-of-return" value="7" min="0" max="100" step="0.1">
                                             </div>
+                                            <small class="text-muted">Average annual return rate (typically 5-10% for moderate risk)</small>
                                         </div>
                                         
                                         <div class="mb-3">
@@ -100,25 +126,30 @@
                                                 <i class="fa-regular fa-calendar"></i>
                                                 <input type="number" class="form-control" id="investment-period" value="5" min="1" max="50">
                                             </div>
+                                            <small class="text-muted">How long you plan to keep your investment</small>
                                         </div>
                                         
                                         <div class="mb-3 d-none" id="additional-contribution-container">
                                             <label for="additional-contribution" class="form-label">Monthly Contribution</label>
                                             <div class="input-with-icon">
                                                 <i class="fa-solid fa-plus"></i>
-                                                <input type="number" class="form-control" id="additional-contribution" value="0" min="0">
+                                                <input type="number" class="form-control" id="additional-contribution" value="200" min="0">
                                             </div>
+                                            <small class="text-muted">Additional amount you'll contribute each month</small>
                                         </div>
                                         
-                                        <div class="form-check mb-3">
+                                        <div class="form-check mb-4">
                                             <input class="form-check-input" type="checkbox" id="enable-contributions">
                                             <label class="form-check-label" for="enable-contributions">
                                                 Add monthly contributions
                                             </label>
+                                            <i class="fas fa-info-circle ms-2 tooltip-info" data-bs-toggle="tooltip" data-bs-placement="right" title="Adding regular contributions significantly increases your investment growth over time"></i>
                                         </div>
                                         
                                         <div class="d-grid">
-                                            <button type="button" class="btn btn-primary" id="calculate-roi">Calculate ROI</button>
+                                            <button type="button" class="btn btn-primary" id="calculate-roi">
+                                                <i class="fas fa-calculator me-2"></i>Calculate ROI
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -169,7 +200,7 @@
                                             <label for="compound-principal" class="form-label">Initial Principal</label>
                                             <div class="input-with-icon">
                                                 <i class="fa-solid fa-money-bill"></i>
-                                                <input type="number" class="form-control" id="compound-principal" value="10000" min="1">
+                                                <input type="number" class="form-control" id="compound-principal" value="10000" min="1" step="100">
                                             </div>
                                         </div>
                                         
@@ -191,14 +222,11 @@
                                         
                                         <div class="mb-3">
                                             <label for="compound-time" class="form-label">Time Period (Years)</label>
-                                            <div class="range-slider">
-                                                <input type="range" class="form-range" id="compound-time" min="1" max="40" value="10" step="1">
-                                                <div class="range-min-max">
-                                                    <span>1 year</span>
-                                                    <span id="compound-time-value">10 years</span>
-                                                    <span>40 years</span>
-                                                </div>
+                                            <div class="input-with-icon">
+                                                <i class="fa-regular fa-calendar"></i>
+                                                <input type="number" class="form-control" id="compound-time" value="10" min="1" max="50" step="1">
                                             </div>
+                                            <small class="text-muted">Enter how long you plan to keep your investment</small>
                                         </div>
                                         
                                         <div class="mb-3">
@@ -210,10 +238,13 @@
                                                 <option value="1" selected>Annually</option>
                                                 <option value="365">Daily</option>
                                             </select>
+                                            <small class="text-muted">How often interest is calculated and added to your principal</small>
                                         </div>
                                         
                                         <div class="d-grid">
-                                            <button type="button" class="btn btn-primary" id="calculate-compound">Calculate Growth</button>
+                                            <button type="button" class="btn btn-primary" id="calculate-compound">
+                                                <i class="fas fa-calculator me-2"></i>Calculate Growth
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -278,7 +309,7 @@
                                     <label for="comparison-amount" class="form-label">Initial Investment</label>
                                     <div class="input-with-icon">
                                         <i class="fa-solid fa-money-bill"></i>
-                                        <input type="number" class="form-control" id="comparison-amount" value="10000" min="1">
+                                        <input type="number" class="form-control" id="comparison-amount" value="10000" min="1" step="100">
                                     </div>
                                 </div>
                                 
@@ -300,7 +331,9 @@
                             </div>
                             
                             <div class="d-grid mt-2">
-                                <button type="button" class="btn btn-primary" id="compare-investments">Compare Investments</button>
+                                <button type="button" class="btn btn-primary" id="compare-investments">
+                                    <i class="fas fa-balance-scale me-2"></i>Compare Investments
+                                </button>
                             </div>
                         </div>
                         
@@ -371,5 +404,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom JS -->
     <script src="../public/js/calculator.js"></script>
+    <!-- Initialize tooltips -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Bootstrap tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
 </body>
 </html>
