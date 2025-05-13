@@ -36,7 +36,7 @@ html, body {
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem;
     box-shadow: var(--box-shadow);
 }
 
