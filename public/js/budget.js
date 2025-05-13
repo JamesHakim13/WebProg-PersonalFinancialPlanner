@@ -220,3 +220,19 @@ function updateBudgetDistributionWithNewCategory(newCategory) {
         chart.update();
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current date
+    const currentDate = document.getElementById('current-date');
+    const today = new Date();
+    currentDate.textContent = today.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    
+    // Initialize charts
+    initBudgetDistributionChart();
+    // Add event listeners
+    initEventListeners();
+});
